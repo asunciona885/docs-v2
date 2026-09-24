@@ -1,5 +1,30 @@
 <!-- Generated from CHANGELOG.md. Edit upstream and re-sync; do not edit here. -->
 
+## v2.4.0 {date="2026-08-27"}
+
+> :warning: **Breaking Changes**: Node v20 support is dropped. Node v22 or newer is now required ([#881](https://github.com/InfluxCommunity/influxdb3-js/pull/881)).
+
+### Bugfix
+
+1. [#864](https://github.com/InfluxCommunity/influxdb3-js/pull/864): Add support for connecting to InfluxDB servers
+   using IPv6 addresses.
+   - IPv6 addresses in server URLs must be enclosed in square brackets, for example, http://[2001:db8::1]:8086.
+   - IPv6 zone identifiers are not currently supported.
+
+## v2.3.0 {date="2026-06-11"}
+
+### Features
+
+1. [#790](https://github.com/InfluxCommunity/influxdb3-js/pull/790): When setting Point timestamp to `new Date()`, the timestamp sent to the servers will be converted to the precision set in `WriteOptions`.
+2. [#796](https://github.com/InfluxCommunity/influxdb3-js/pull/796): Adds partial write support and API endpoint selection for writes.
+   - Writes use the V2 API endpoint by default.
+   - `noSync` requires the V3 API endpoint; `acceptPartial` applies only to the V3 API endpoint and is ignored when using the V2 API endpoint.
+   - See [Partial writes](https://docs.influxdata.com/influxdb3/core/write-data/http-api/v3-write-lp/#partial-writes) for more.
+
+### Build
+
+1. [#775](https://github.com/InfluxCommunity/influxdb3-js/pull/775): Upgrade typescript to 6.0.3.
+
 ## v2.2.0 {date="2026-04-23"}
 
 ### Features

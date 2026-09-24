@@ -1,5 +1,21 @@
 <!-- Generated from CHANGELOG.md. Edit upstream and re-sync; do not edit here. -->
 
+## v1.10.0 {date="2026-08-27"}
+
+### Features
+
+1. [#308](https://github.com/InfluxCommunity/influxdb3-csharp/pull/308): Add `writeOptions` argument to write async methods.  The passed `WriteOptions` argument will replace `WriteOptions` defined in `ClientConfig`, except for `Precision`, when the `writeOptions.Precision` argument is null.
+   - __Breaking change__: Note this changes the `IInfluxDBClient` interface in that write methods now have an additional optional argument `writeOptions`.  The CLR signature for this part of the library is now changed.
+
+## v1.9.0 {date="2026-06-11"}
+
+### Features
+
+1. [#269](https://github.com/InfluxCommunity/influxdb3-csharp/pull/269): Add partial writes support and default writes to the V2 API endpoint.
+   - `NoSync` requires `UseV2Api=false` and the V3 API endpoint.
+   - `AcceptPartial` applies only when writes are sent to the V3 API endpoint and is ignored when using the V2 API endpoint.
+   See [Partial writes](https://docs.influxdata.com/influxdb3/core/write-data/http-api/v3-write-lp/#partial-writes) for more.
+
 ## v1.8.0 {date="2026-04-23"}
 
 ### Features
@@ -67,7 +83,7 @@
    persistence:
     - New write option (`WriteOptions.NoSync`) added: `true` value means faster write but without the confirmation that
       the data was persisted. Default value: `false`.
-    - **Supported by self-managed InfluxDB 3 Core and Enterprise servers only!**
+    - __Supported by self-managed InfluxDB 3 Core and Enterprise servers only!__
     - Also configurable via connection string query parameter (`writeNoSync`).
     - Also configurable via environment variable (`INFLUX_WRITE_NO_SYNC`).
     - Long precision string values added from v3 HTTP API: `"nanosecond"`, `"microsecond"`, `"millisecond"`,
@@ -82,7 +98,7 @@
    - New configuration items:
       - `SslRootsFilePath`
       - `DisableCertificateRevocationListCheck`
-   - **Disclaimer:** Using custom SSL root certificate configurations is recommended for development and testing
+   - __Disclaimer:__ Using custom SSL root certificate configurations is recommended for development and testing
      purposes
      only. For production deployments, ensure custom certificates are added to the operating system's trusted
      certificate store.
